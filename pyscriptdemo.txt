@@ -1,0 +1,15 @@
+<py-script> 
+import js 
+from pyodide.ffi import create_proxy 
+ 
+def bubble_api_nuzzle(): 
+ # Pull Bubble data via JS (e.g., current user's helix % from state) 
+ user_helix = js.Bubble.state.current_user_helix_percent or 100.0 # Fallback to 100% 
+ pod_data = js.Bubble.state.pod_size or 13 
+ result = helix_awaken(float(user_helix), int(pod_data)) 
+ js.document.getElementById("helix_output").innerText = result 
+ return result 
+ 
+# Trigger on load or input 
+bubble_api_nuzzle() 
+</py-script
